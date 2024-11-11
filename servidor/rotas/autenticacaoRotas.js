@@ -1,9 +1,3 @@
-// servidor/rotas/autenticacaoRotas.js
-const express = require("express");
-const bcrypt = require("bcrypt");
-const pool = require("../db"); // Importando a conexão com o banco de dados
-const router = express.Router();
-
 // Rota para autenticar o usuário
 router.post("/login", async (req, res) => {
   const { usuario_sec, senha_sec } = req.body;
@@ -26,14 +20,18 @@ router.post("/login", async (req, res) => {
       result.rows[0].senha_sec
     );
 
+    // Se a senha estiver correta
     if (senhaCorreta) {
-      res.status(200).json({ message: "Login bem-sucedido!" });
+      // Login bem-sucedido
+      res.status(200).json({ message: "Login bem-sucedido!", success: true });
     } else {
-      res.status(401).json({ message: "Senha incorreta!" });
+      // Falha no login
+      res
+        .status(401).json({ message: "Usuário ou senha inválidos!", success: false });
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: "Erro interno do servidor" });
+    res.status(500).json({ message: "Erro interno do servidor", success: false });
   }
 });
 
