@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Para redirecionamento
 import "./Login.css"; // Importando o CSS
 import logo from "../../assets/imagens/APAE-Logo.png"; // Importando a imagem corretamente
 
@@ -7,6 +8,7 @@ const LoginPage = () => {
   const [usuario, setUsuario] = useState(""); // Estado para armazenar o nome de usuário
   const [senha, setSenha] = useState(""); // Estado para armazenar a senha
   const [erro, setErro] = useState(""); // Estado para controlar as mensagens de erro
+  const navigate = useNavigate(); // Hook de navegação do React Router
 
   const toggleOverlay = () => {
     setOverlayVisible(!isOverlayVisible);
@@ -18,7 +20,7 @@ const LoginPage = () => {
 
     try {
       // Fazendo a requisição de login à API
-      const response = await fetch("/api/login", {
+      const response = await fetch("http://localhost:3001/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,16 +29,17 @@ const LoginPage = () => {
       });
 
       const data = await response.json();
+      console.log("Resposta da API:", data); // Verifique a resposta
 
-      if (response.status === 200) {
-        // Redirecionar ou fazer qualquer outra ação quando o login for bem-sucedido
-        alert(data.message); // Exemplo de mensagem de sucesso
+      if (response.ok) {
+        // Redirecionar para a página inicial após login bem-sucedido
+        navigate("/inicio"); // Ajuste "/inicio" para a rota correta da sua página inicial
       } else {
-        setErro(data.message); // Definir a mensagem de erro
+        setErro(data.message || "Erro no login"); // Caso haja erro no login
       }
     } catch (err) {
-      console.error("Erro ao fazer login:", err);
-      setErro("Erro interno. Tente novamente mais tarde.");
+      console.error("Erro de conexão:", err);
+      setErro("Erro ao tentar fazer login");
     }
   };
 
@@ -78,8 +81,7 @@ const LoginPage = () => {
             Entrar
           </button>
         </form>
-        {erro && <div className="error-message">{erro}</div>}{" "}
-        {/* Exibindo a mensagem de erro */}
+        {erro && <div className="error-message">{erro}</div>}
       </section>
       <aside
         className={`overlay ${isOverlayVisible ? "left" : "right"}`}
