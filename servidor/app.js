@@ -1,20 +1,18 @@
 // servidor/app.js
-const express = require('express');
-const cors = require('cors');
+const express = require("express");
+const bodyParser = require("body-parser");
+const autenticacaoRotas = require("./controladores/autenticacao"); // Importando o controlador de autenticação
+
 const app = express();
-const bodyParser = require('body-parser');
-const autenticacaoRotas = require('./rotas/autenticacao');
 
-// Permite requisições de qualquer origem
-app.use(cors());
-
-// Configuração do body-parser
+// Configuração do body-parser para processar JSON
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Roteamento
-app.use('/api', autenticacaoRotas);
+// Definindo a rota de login
+app.use("/api", autenticacaoRotas);
 
+// Iniciar o servidor na porta 3001
 app.listen(3001, () => {
-  console.log('Servidor rodando na porta 3001');
+  console.log("Servidor rodando na porta 3001");
 });
