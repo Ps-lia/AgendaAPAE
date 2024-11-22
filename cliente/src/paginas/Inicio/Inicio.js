@@ -6,7 +6,6 @@ const Inicio = () => {
     <div>
       <h1>Bem-vindo à página inicial!</h1>
       {/* Outros conteúdos da página inicial */}
-      Teste
     </div>
   );
 };
