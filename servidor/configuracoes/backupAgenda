@@ -1,0 +1,11 @@
+CREATE TABLE secretaria (
+    id SERIAL PRIMARY KEY,         
+    usuario_sec VARCHAR(255) UNIQUE NOT NULL, 
+    senha_sec VARCHAR(255) NOT NULL
+);
+
+
+-- criação dos dados das colunas usuario e senha
+
+INSERT INTO secretaria (usuario_sec, senha_sec) 
+VALUES ('admin', 'admin123');
