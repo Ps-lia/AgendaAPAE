@@ -31,7 +31,7 @@ const handleSubmit = async (event) => {
     const data = await response.json();
     console.log("Resposta da API:", data); // Verifique o que a API retornou
 
-    if (!response.ok) {
+    if (response.ok) {
       navigate("/paginas/Inicio/Inicio");
     } else {
       setErro(data.message || "Erro no login"); // Caso haja erro no login
