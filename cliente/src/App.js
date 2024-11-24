@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./paginas/Login/Login"; // Página de Login
 import Inicio from "./paginas/Inicio/Inicio"; // Página Inicial
@@ -12,7 +13,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />{" "}
+        <Route path="/login" element={<Login />} />{" "}
         {/* Rota para a página de login */}
         <Route path="/inicio" element={<Inicio />} />{" "}
         {/* Rota para a página inicial */}

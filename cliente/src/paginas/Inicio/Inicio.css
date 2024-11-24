@@ -1,0 +1,163 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  height: 100vh;
+  background-color: #fff; /* Cor de fundo branca */
+  overflow: hidden; /* Evita rolagem no corpo */
+}
+
+header {
+  background-color: #81c784; /* Verde */
+  color: #fff;
+  padding: 15px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex; /* Usa flexbox para o header */
+  justify-content: space-between; /* Espaça os itens do header */
+  align-items: center; /* Centraliza os itens verticalmente */
+  z-index: 900; /* Garante que o header fique acima de outros elementos */
+}
+
+/* Botão de logout */
+.logout-btn {
+  background-color: #e53e3e;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Modal de logout */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.modal-content h2 {
+  margin-bottom: 1rem;
+  font-size: 18px;
+}
+
+.modal-content button {
+  margin: 0.5rem;
+  padding: 0.8rem 2rem;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content button:first-child {
+  background-color: #4c6ef5;
+  color: white;
+}
+
+.modal-content button:first-child:hover {
+  background-color: #3658e4;
+}
+
+.modal-content button:last-child {
+  background-color: #e53e3e;
+  color: white;
+}
+
+.modal-content button:last-child:hover {
+  background-color: #c53030;
+}
+
+
+.menu {
+  display: block; /* Inicialmente oculto */
+  background-color: #4caf50; /* Cor de fundo para o menu */
+  position: fixed; /* Fixo ao lado esquerdo */
+  top: 66px; /* Ajustado para alinhar com a parte inferior do header */
+  left: 0;
+  width: 200px; /* Largura do menu */
+  height: calc(100vh - 66px); /* Altura total menos a altura do header */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Sombra para o menu */
+  z-index: 1000; /* Acima do conteúdo */
+}
+
+.menu ul {
+  list-style: none; /* Remove as bolinhas da lista */
+  padding: 20px 0; /* Espaçamento interno aumentado */
+}
+
+.menu li {
+  padding: 15px; /* Aumenta o padding para mais espaço */
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s; /* Adiciona transição suave */
+  border-radius: 10px; /* Bordas arredondadas para os itens do menu */
+}
+
+.menu li:hover {
+  background-color: #006305; /* Verde ao passar o mouse */
+  transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
+.toggle-btn {
+  background: transparent; /* Fundo transparente */
+  border: none;
+  cursor: pointer;
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  align-items: center; /* Centraliza o conteúdo verticalmente */
+  text-align: center; /* Centraliza o texto dentro do conteúdo */
+  display: left;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px; /* Largura dos risquinhos */
+  height: 20px; /* Altura total dos risquinhos */
+}
+
+.line {
+  height: 4px; /* Altura de cada risquinho */
+  background-color: #fff; /* Cor dos risquinhos */
+  border-radius: 2px; /* Cantos arredondados */
+}
+
+/* Estilos do Modal */
+.modal {
+  display: flex; /* Exibe o modal quando necessário */
+  position: fixed; /* Fixo na tela */
+  top: 0;
+  left: 0;
+  width: 100%; /* Largura total */
+  height: 100%; /* Altura total */
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  z-index: 1001; /* Acima do menu e conteúdo */
+}
