@@ -14,7 +14,7 @@ function Menu() {
   };
 
   const confirmLogout = () => {
-    window.location.href = "login"; // Redireciona para a página de login
+    window.location.href = "/"; // Redireciona para a página de login
   };
 
   const cancelLogout = () => {
