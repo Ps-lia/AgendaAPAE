@@ -13,7 +13,7 @@ body {
 }
 
 header {
-  background-color: #81c784; /* Verde */
+  background-color: #4caf50; /* Verde */
   color: #fff;
   padding: 15px;
   width: 100%;
@@ -26,73 +26,19 @@ header {
   z-index: 900; /* Garante que o header fique acima de outros elementos */
 }
 
-/* Botão de logout */
 .logout-btn {
-  background-color: #e53e3e;
-  color: white;
+  background-color: #f44336; /* Vermelho */
+  color: #fff;
   border: none;
-  padding: 0.5rem 1rem;
-  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 5px; /* Bordas arredondadas */
   cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s; /* Transição suave */
 }
 
-/* Modal de logout */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.logout-btn:hover {
+  background-color: #d32f2f; /* Tom mais escuro ao passar o mouse */
 }
-
-.modal-content {
-  background-color: white;
-  padding: 2rem;
-  text-align: center;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 300px;
-}
-
-.modal-content h2 {
-  margin-bottom: 1rem;
-  font-size: 18px;
-}
-
-.modal-content button {
-  margin: 0.5rem;
-  padding: 0.8rem 2rem;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.modal-content button:first-child {
-  background-color: #4c6ef5;
-  color: white;
-}
-
-.modal-content button:first-child:hover {
-  background-color: #3658e4;
-}
-
-.modal-content button:last-child {
-  background-color: #e53e3e;
-  color: white;
-}
-
-.modal-content button:last-child:hover {
-  background-color: #c53030;
-}
-
 
 .menu {
   display: block; /* Inicialmente oculto */
@@ -120,18 +66,40 @@ header {
 }
 
 .menu li:hover {
-  background-color: #006305; /* Verde ao passar o mouse */
+  background-color: #45a049; /* Verde ao passar o mouse */
   transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
+.content {
+  padding: 20px;
+  padding-top: 80px; /* Espaço para o header */
+  flex-grow: 1;
+  background-color: #fff; /* Cor de fundo branca para o conteúdo */
+  height: calc(100vh - 80px); /* Altura total menos a altura do header */
+  overflow-y: auto; /* Permite rolagem se o conteúdo for muito alto */
+  display: flex;
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  align-items: center; /* Centraliza o conteúdo verticalmente */
+  text-align: center; /* Centraliza o texto dentro do conteúdo */
+}
+
+.responsive-img {
+  max-width: 80%; /* Aumenta a largura máxima da imagem para 80% */
+  height: auto; /* Mantém a proporção da imagem */
+  display: block; /* Remove espaços embaixo da imagem */
+  margin: 0 40px; /* Aumenta a margem à esquerda e à direita para 40px */
+}
+
+.content.shift {
+  padding-left: 220px; /* Adiciona espaço para a sidebar quando ativa */
+  transition: padding-left 0.3s ease; /* Transição suave ao mudar padding */
 }
 
 .toggle-btn {
   background: transparent; /* Fundo transparente */
   border: none;
   cursor: pointer;
-  justify-content: center; /* Centraliza o conteúdo horizontalmente */
-  align-items: center; /* Centraliza o conteúdo verticalmente */
-  text-align: center; /* Centraliza o texto dentro do conteúdo */
-  display: left;
+  z-index: 101; /* Certifica-se de que o botão fique acima de outros elementos */
 }
 
 .hamburger {
@@ -160,4 +128,54 @@ header {
   justify-content: center; /* Centraliza horizontalmente */
   align-items: center; /* Centraliza verticalmente */
   z-index: 1001; /* Acima do menu e conteúdo */
+}
+
+.modal-content {
+  background-color: #fff; /* Cor de fundo branca */
+  padding: 20px;
+  border-radius: 10px; /* Bordas arredondadas */
+  text-align: center; /* Centraliza o texto */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+.modal-content h2 {
+  color: #4caf50; /* Tom de verde */
+  margin-bottom: 20px; /* Espaço abaixo do título */
+}
+
+.modal-content button {
+  background-color: #4caf50; /* Verde */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer;
+  margin: 0 10px; /* Espaçamento entre os botões */
+  transition: background 0.3s; /* Transição suave */
+}
+
+.modal-content button:hover {
+  background-color: #388e3c; /* Tom mais escuro ao passar o mouse */
+}
+
+@media (max-width: 768px) {
+  header {
+    font-size: 18px; /* Ajusta o tamanho da fonte do header em telas menores */
+  }
+
+  .menu {
+    width: 100%; /* Menu ocupa toda a largura da tela em dispositivos menores */
+    height: auto; /* Altura do menu se adapta ao conteúdo */
+    position: relative; /* Permite que o menu role com o conteúdo */
+  }
+
+  .content {
+    padding-left: 10px; /* Menos padding em telas menores */
+    padding-right: 10px; /* Aumenta o padding à direita */
+  }
+
+  .responsive-img {
+    max-width: 90%; /* Aumenta a largura máxima da imagem em telas menores */
+    margin: 0 40px; /* Mantém a margem de 40px para dispositivos menores */
+  }
 }
